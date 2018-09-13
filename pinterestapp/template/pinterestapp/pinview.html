@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {margin:25px;}
+
+div.polaroid {
+  width: 50%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  margin-left:25%;
+  border: 20px solid white;
+  border-radius:7px;
+}
+
+div.container {
+  text-align: left;
+  padding: 10px 20px;
+}
+
+body
+{
+    background-color:#E0E0E0;
+}
+
+img{border-radius:7px;}
+
+.dp{
+    width:9%;
+    float:left;
+    margin-right:20px;
+    border-radius:50%;
+}
+
+
+
+.greyish {
+  background: $smoke !important;
+}
+
+h1 {
+    margin: rem-calc(100) 0 0;
+}
+
+img {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+.img-container {
+  display: inline-block;
+  position: relative;
+}
+
+.button {
+    display: none;
+    color: white;
+    background-color: black;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.img-container:hover .button {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.img-container:hover img {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+}
+
+</style>
+</head>
+<body>
+
+
+
+<div class="polaroid">
+  <!--<img src="{{pin.photo.url}}" width="100%">-->
+    <div class="img-container small-4 columns">
+    {% load static %}
+      <img src="{{pin.photo.url}}" width="100%">
+    <a class="button" href="/jane/">View Jane's Profile</a>
+</div>
+  <div class="container" >
+
+
+    <p>  {% load static %}
+
+      {% if profile.profile_picture is not null %}
+            <img src="{{profile.profile_picture.url}}" class="dp">
+
+      {% else %}
+      {% load static %}
+      <img src="{% static 'pinterestapp//imgplaceholder2.png' %}" class="dp">
+
+      {% endif %}
+
+        <b >{{request.user.username}}</b><br>
+   {{pin.title}}
+
+   </p>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

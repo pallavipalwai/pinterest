@@ -1,0 +1,78 @@
+{% load widget_tweaks %}
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<style>
+	{% load static %}
+	/* body{background-image: url("{% static 'pinterestapp//joshua-stannard.jpg'  %}");} */
+
+
+
+		.title{ text-indent : 46px;}
+		.idea{
+
+			text-indent : 27px;
+			color :  #90A4AE;
+		}
+		.idea1{
+
+			text-indent : 63px;
+			color :  #90A4AE;
+		}
+
+	</style>
+
+
+<body>
+
+	<div class="container">
+		{% load static %}
+		<img src="{% static 'pinterestapp//pinterest_logo_red.png'%}" width="300" height="100" >
+	</div>
+	<div class="bgimg">
+	<div class="section section-image section-login">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 ml-auto mr-auto">
+                            <div class="card card-register">
+                                <h3 class="title">  <b>Log in to see more</b></h3>
+                                <h4 class="idea">Access Pinterest's best ideas</h4><h4 class="idea1"> with a free account</h4>
+                               <br>
+                                <form class="register-form" method="post">
+									{% csrf_token %}
+                                    <div class="input-group form-group-no-border">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+										{% render_field login_details.username class="form-control" placeholder="Email"%}
+
+                                    </div>
+									<br>
+
+                                    <div class="input-group form-group-no-border">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        {% render_field login_details.password class="form-control" placeholder="Password"%}
+                                    </div>
+									<br>
+									<button class="btn btn-danger btn-block btn-round" type="submit" val="submit"><b>Login</b></button>
+                                </form>
+								<p>New to Pinterest? <a href="/signup/">SignUp</a>
+                            </div>
+                            <div class="col text-center">
+								<p><span style="color : #90A4AE"> By logging in, you agree to Pinterest's </span> <b>Terms of Service, Privacy Policy</b> 	</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<br><br><br><br>
+
+
+
+
+
+</body>
+</html>

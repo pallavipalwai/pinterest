@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+     <style>
+        img{
+            float:left;
+            margin-left:20px;
+            margin-top:2px;
+        }
+
+        .searchbox{
+            margin-top:20px;
+            margin-left:70px;
+            height: 5px;
+        }
+        .homebuttons{
+            margin-left:600px;
+            margin-top:1px;
+            margin-right:20px;
+            color:black;
+
+        }
+        a{text-decoration:none;
+          font-color:black;
+          font-size:19px;
+        }
+
+
+        {% block style%}
+    {%  endblock %}
+
+     </style>
+    {% block head%}
+    {%  endblock %}
+</head>
+<body>
+
+        <div class="topnav">
+            {% load static %}
+                <div class="imgdiv">
+                <img src="{% static 'pinterestapp//Pinterst_logo.png'%}" width="50" height="50">
+        </div>
+
+    <div class="homebuttons">
+            <a  href="{% url 'logout' %}" style="float:right;margin-right:30px;color:#757575">Logout</a>
+            <a href="/profile/{{request.user.username}}/" style="float:right;margin-right:40px;color:#757575">{{request.user.username}}</a>
+            <a href="/following/" style="float:right;margin-right:50px;color:#757575;font-family:helvetica"><b>Following</b></a>
+            <a href="/home/" style="float:right;margin-right:50px;color:#757575" ><b>Explore</b></a>
+            <a href="/home/" style="float:right;margin-right:50px;color:#757575"><b>Home</b></a>
+    </div>
+
+    <div class="searchbox">
+        <div class="col-xs-4" style="float:left;margin-left:20px">
+            <div class="input-group form-group-no-border" >
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input class="form-control" id="ex3" type="text">
+            </div>
+        </div>
+
+    </div>
+<br>
+<hr>
+
+</div>
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

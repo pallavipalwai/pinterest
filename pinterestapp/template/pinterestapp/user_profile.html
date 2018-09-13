@@ -1,0 +1,33 @@
+{% extends 'navbar.html' %}
+
+
+{% block style%}
+
+img:hover {
+  outline: 2px solid #E0E0E0;
+    cursor:pointer;
+}
+{% endblock %}
+
+{% block content %}
+<h1 style="float:left;margin-left:20%;margin-top:3.5%">{{user.username}}</h1>
+
+{% load static %}
+<img src="{% static 'pinterestapp//tempbg.jpg'%}" width="130" height="130" style="border-radius: 50%;float:right;margin-right:20%;margin-top:3.5%">
+
+<br><br><br><br><br><br><br><br><br><br>
+        <a href="" style="margin-left:20%;color:#757575;">Boards</a>
+        <a href="{% url 'viewallpins' user.username %}" style="margin-left:1%;color:#757575;">Pins</a>
+        <a href="" style="margin-left:1%;color:#757575;">Tries </a>
+        <a href="/profile/{{request.user.username}}/topics/" style="margin-left:1%;color:#757575;">Topics</a><br><br>
+
+
+
+
+	{% load static %}
+<a href="{% url 'createpin'%}" >  <img src="{% static 'pinterestapp//createpin1.png'%}" style="margin-left:7%" ></a>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'navbar.html' %}
+
+{% block style %}
+
+body {
+
+  min-height: 1000px;
+}
+#columns {
+	column-width: 150px;
+	column-gap: 13px;
+  width: 90%;
+	max-width: 1100px;
+	margin: 50px auto;
+
+}
+
+div#columns figure {
+	background: #fefefe;
+	margin: 0 2px 15px;
+	transition: opacity .4s ease-in-out;
+  display: inline-block;
+  column-break-inside: avoid;
+
+
+}
+
+
+
+div#columns figure img {
+	width: 94%; height: auto;
+	border-radius:5%;
+    cursor:zoom-in;
+}
+
+
+{% endblock %}
+{% block content %}
+
+<h1 style="float:left;margin-left:20%;margin-top:3.5%">{{user.username}}</h1>
+
+{% load static %}
+<img src="{% static 'pinterestapp//tempbg.jpg'%}" width="130" height="130" style="border-radius: 50%;float:right;margin-right:20%;margin-top:3.5%">
+
+<br><br><br><br><br><br><br><br><br><br>
+        <a href="" style="margin-left:20%;color:#757575;">Boards</a>
+        <a href="{% url 'viewallpins' user.username %}" style="margin-left:1%;color:#757575;">Pins</a>
+        <a href="" style="margin-left:1%;color:#757575;">Tries </a>
+        <a href="/profile/{{request.user.username}}/topics/" style="margin-left:1%;color:#757575;">Topics</a><br><br>
+
+
+
+
+	{% load static %}
+         <a href="{% url 'createpin'%}" >  <img src="{% static 'pinterestapp//createpin1.png'%}" style="margin-left:7%" width="20%" ></a>
+
+
+ <div id="columns">
+    <!-- <figure>
+         <a href="{% url 'createpin'%}" >  <img src="{% static 'pinterestapp//createpin1.png'%}" style="margin-left:7%" width="100%" ></a>
+     </figure> -->
+    {% for pin in pins %}
+        <figure>
+            <a href="{% url 'viewpin' pin.id %}"><img src="{{pin.photo.url}}"></a>
+        </figure>
+
+     {% endfor %}
+ </div>
+
+
+{% endblock %}
